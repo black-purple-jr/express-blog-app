@@ -1,13 +1,13 @@
 const express = require('express');
 const path = require('path');
 
-app.use(express.static(path.join(__dirname, 'public')));
 
 // initialize express app
 const app = express();
+app.use(express.static(path.join(__dirname, 'public')));
 
 // register view engine
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname,'src', 'views'));
 app.set('view engine', 'ejs');
 
 const port = 3000;
