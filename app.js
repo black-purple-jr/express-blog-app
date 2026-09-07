@@ -1,10 +1,10 @@
 const express = require('express');
 const path = require('path');
-
+const morgan = require('morgan');
 
 // initialize express app
 const app = express();
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 // register view engine
 app.set('views', path.join(__dirname,'src', 'views'));
@@ -12,6 +12,8 @@ app.set('view engine', 'ejs');
 
 const port = 3000;
 app.listen(port);
+
+app.use(morgan('dev'));
 
 // listen for requests
 app.get("/", (req, res) => {
