@@ -211,8 +211,8 @@
   .mt-8 {
     margin-top: calc(var(--spacing) * 8);
   }
-  .mt-\[200px\] {
-    margin-top: 200px;
+  .mt-46\.25 {
+    margin-top: calc(var(--spacing) * 46.25);
   }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);

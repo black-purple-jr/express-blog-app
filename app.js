@@ -1,21 +1,50 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const path = require('path');
 const morgan = require('morgan');
+const Blog = require('./src/models/blog')
+const port = 3000;
+
 
 // initialize express app
 const app = express();
+
+// Connection to mongoDB
+const dbURI = "mongodb://localhost:27017/express-blogs";
+mongoose.connect(dbURI)
+  .then(res => app.listen(port))
+  .catch(err => console.log(err))
+
+// , { useNewUrlParser: true, useUnifiedTopology: true }
+
 app.use(express.static('public'));
 
 // register view engine
 app.set('views', path.join(__dirname,'src', 'views'));
 app.set('view engine', 'ejs');
 
-const port = 3000;
-app.listen(port);
-
 app.use(morgan('dev'));
 
-// listen for requests
+// mongoose sandbox routes
+
+app.get('/add-blog', (req, res) => {
+  const blog = new Blog({
+    title: "New blog",
+    snippet: 'About this new blog',
+    body: "More about this new blog"
+  });
+
+  blog.save()
+    .then(result => res.send(result))
+    .catch(err => console.log(err));
+
+});
+
+app.get('/all-blogs', (req, res) => {
+  Blog.find();
+})
+
+// routes
 app.get("/", (req, res) => {
   const blogs = [
     { title: "Yoshi finds eggs", snippet: "Lorem ipsum dolor sit amet consectetur" },
