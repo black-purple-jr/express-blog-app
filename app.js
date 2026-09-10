@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const mongoose = require('mongoose');
 const path = require('path');
 const morgan = require('morgan');
@@ -15,15 +15,16 @@ mongoose.connect(dbURI)
   .then(res => app.listen(port))
   .catch(err => console.log(err))
 
-// , { useNewUrlParser: true, useUnifiedTopology: true }
 
+// middleware & static files
 app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
+app.use(morgan('dev'));
 
 // register view engine
 app.set('views', path.join(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 
-app.use(morgan('dev'));
 
 // routes
 
@@ -39,14 +40,16 @@ app.get("/blogs", (req, res) => {
     .catch(err => console.log(err));
 });
 
-
+app.post('/blogs', (req, res) => {
+  console.log(req.body);
+})
 
 app.get("/about", (req, res) => {
   res.render('about', { title: "About" });
 });
 
-app.get('/blogs/create', (req, res) => {
-  res.render('create', { title: "Create Blog" });
+app.get('/blogs/new', (req, res) => {
+  res.render('new', { title: "New Blog" });
 })
 
 
