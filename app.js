@@ -39,6 +39,8 @@ app.get("/blogs", (req, res) => {
     .catch(err => console.log(err));
 });
 
+
+
 app.get("/about", (req, res) => {
   res.render('about', { title: "About" });
 });

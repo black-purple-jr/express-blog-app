@@ -6,7 +6,7 @@
   <%- include("./partials/nav.ejs") %>
 
   <div class="create-blog content flex justify-center mt-3">
-    <form class="flex flex-col justify-evenly gap-3 w-[30em] border-indigo-500 rounded-lg p-5 bg-zinc-800">
+    <form action="/blogs" method="POST" class="flex flex-col justify-evenly gap-3 w-[30em] border-indigo-500 rounded-lg p-5 bg-zinc-800">
       <label for="title" class="text-xl font-serif">Blog title</label>
       <input type="text" id="title" required class="bg-zinc-700 h-11 text-xl outline-none px-3 pb-1 border-2 border-indigo-500 rounded-lg flex" />
 
