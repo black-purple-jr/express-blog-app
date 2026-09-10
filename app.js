@@ -41,8 +41,19 @@ app.get("/blogs", (req, res) => {
 });
 
 app.post('/blogs', (req, res) => {
-  console.log(req.body);
-})
+  const blog = new Blog(req.body);
+
+  blog.save()
+    .then(result => res.redirect('/blogs'))
+    .catch(err => console.log(err))
+});
+
+app.get("/blogs/:id", (req, res) => {
+  const id = req.params.id;
+  Blog.findById(id)
+    .then(result => res.render("details", { blog: result, title: blog.title }))
+    .catch(err => console.log(err));
+});
 
 app.get("/about", (req, res) => {
   res.render('about', { title: "About" });
