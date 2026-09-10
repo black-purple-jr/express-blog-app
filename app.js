@@ -20,47 +20,23 @@ mongoose.connect(dbURI)
 app.use(express.static('public'));
 
 // register view engine
-app.set('views', path.join(__dirname,'src', 'views'));
+app.set('views', path.join(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 
 app.use(morgan('dev'));
 
-// mongoose sandbox routes
-
-app.get('/add-blog', (req, res) => {
-  const blog = new Blog({
-    title: "New blog",
-    snippet: 'About this new blog',
-    body: "More about this new blog"
-  });
-
-  blog.save()
-    .then(result => res.send(result))
-    .catch(err => console.log(err));
-
-});
-
-app.get('/all-blogs', (req, res) => {
-  Blog.find()
-    .then(result => res.send(result))
-    .catch(err => console.log(err));
-});
-
-app.get('/single-blog', (req, res) => {
-  Blog.findById('6aa0336604b63e7abe02cd01')
-    .then(result => res.send(result))
-    .catch(err => res.send(err));
-});
-
 // routes
-app.get("/", (req, res) => {
-  const blogs = [
-    { title: "Yoshi finds eggs", snippet: "Lorem ipsum dolor sit amet consectetur" },
-    { title: "Mario likes stars", snippet: "Lorem ipsum dolor sit amet consectetur" },
-    { title: "How to defeat bowser", snippet: "Lorem ipsum dolor sit amet consectetur" }
-  ]
 
-  res.render('index', { title: "Home", blogs });
+app.get('/', (req, res) => {
+  res.redirect("/blogs");
+})
+
+// blog routes
+
+app.get("/blogs", (req, res) => {
+  Blog.find()
+    .then(result => res.render('index', { title: "All blogs", blogs: result }))
+    .catch(err => console.log(err));
 });
 
 app.get("/about", (req, res) => {
@@ -71,10 +47,6 @@ app.get('/blogs/create', (req, res) => {
   res.render('create', { title: "Create Blog" });
 })
 
-// redirects
-app.get("/home", (req, res) => {
-  res.redirect("/");
-});
 
 // 404 Not Found
 app.use((req, res) => {
