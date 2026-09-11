@@ -202,9 +202,6 @@
   .my-2 {
     margin-block: calc(var(--spacing) * 2);
   }
-  .my-35 {
-    margin-block: calc(var(--spacing) * 35);
-  }
   .mt-3 {
     margin-top: calc(var(--spacing) * 3);
   }
@@ -231,9 +228,6 @@
   }
   .flex {
     display: flex;
-  }
-  .grid {
-    display: grid;
   }
   .h-11 {
     height: calc(var(--spacing) * 11);
