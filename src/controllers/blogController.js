@@ -1,3 +1,4 @@
+const Blog = require('../models/blog')
 
 const blogIndex = (req, res) => {
   Blog.find().sort({ createdAt: -1 })
