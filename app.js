@@ -48,8 +48,13 @@ app.post('/blogs', (req, res) => {
     .catch(err => console.log(err))
 });
 
+app.get('/blogs/new', (req, res) => {
+  res.render('new', { title: "New Blog" });
+})
+
 app.get("/blogs/:id", (req, res) => {
   const id = req.params.id;
+  
   Blog.findById(id)
     .then(result => res.render("details", { blog: result, title: result.title }))
     .catch(err => console.log(err));
@@ -59,9 +64,6 @@ app.get("/about", (req, res) => {
   res.render('about', { title: "About" });
 });
 
-app.get('/blogs/new', (req, res) => {
-  res.render('new', { title: "New Blog" });
-})
 
 
 // 404 Not Found
