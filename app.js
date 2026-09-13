@@ -25,14 +25,11 @@ app.use(morgan('dev'));
 app.set('views', path.join(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 
-
 // routes
-
 app.get('/', (req, res) => {
   res.redirect("/blogs");
-})
+});
 
-// blog routes
 
 app.get("/blogs", (req, res) => {
   Blog.find()
@@ -54,16 +51,23 @@ app.get('/blogs/new', (req, res) => {
 
 app.get("/blogs/:id", (req, res) => {
   const id = req.params.id;
-  
+
   Blog.findById(id)
     .then(result => res.render("details", { blog: result, title: result.title }))
     .catch(err => console.log(err));
 });
 
+app.delete('/blogs/:id', (req, res) => {
+  const id = req.params.id;
+
+  Blog.findByIdAndDelete(id)
+    .then(result => res.json({ redirect: "/blogs" }))
+    .catch(err => console.log(err))
+})
+
 app.get("/about", (req, res) => {
   res.render('about', { title: "About" });
 });
-
 
 
 // 404 Not Found

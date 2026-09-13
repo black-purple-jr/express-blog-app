@@ -5,18 +5,44 @@
   <body class="my-2 bg-zinc-900 text-neutral-200 flex flex-col gap-10 w-[85vw] m-auto">
     <%- include("./partials/nav.ejs") %>
 
-      <div class="flex flex-col gap-0.5 border-l-2 pl-3">
-        <h3 class="text-2xl font-serif">
-          <%= blog.title %>
-        </h3>
-        <p class="text-lg">
-          <%= blog.body %>
-        </p>
+      <div class="flex items-center justify-between">
+        <div class="flex flex-col gap-0.5 border-l-2 pl-3">
+          <h3 class="text-2xl font-serif">
+            <%= blog.title %>
+          </h3>
+          <p class="text-lg">
+            <%= blog.body %>
+          </p>
+        </div>
+        <a class="delete" data-doc="<%= blog._id %>" title="delete blog">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="oklch(50.5% 0.213 27.518)"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash">
+            <path d="M10 11v6" />
+            <path d="M14 11v6" />
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+            <path d="M3 6h18" />
+            <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+          </svg>
+        </a>
       </div>
-      
 
       <%- include("./partials/footer.ejs") %>
 
+      <script>
+        const trashcan = document.querySelector('a.delete');
+
+        trashcan.addEventListener("click", () => {
+          const endPoint = `/blogs/${trashcan.dataset.doc}`
+
+          fetch(endPoint, {
+            method: "DELETE"
+          })
+            .then(response => response.json())
+            .then(data => window.location.href = data.redirect)
+            .catch(err => console.log(err))
+        })
+
+      </script>
 
   </body>
 
