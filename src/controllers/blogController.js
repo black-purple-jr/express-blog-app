@@ -7,7 +7,19 @@ const blogIndex = (req, res) => {
 };
 
 const blogDetails = (req, res) => {
+  const id = req.params.id;
 
+  Blog.findById(id)
+    .then(result => res.render("details", { blog: result, title: result.title }))
+    .catch(err => console.log(err));
+};
+
+const blogDelete = (req, res) => {
+  const id = req.params.id;
+
+  Blog.findByIdAndDelete(id)
+    .then(result => res.json({ redirect: "/blogs" }))
+    .catch(err => console.log(err))
 }
 
-module.exports = { blogIndex, blogDetails }
+module.exports = { blogIndex, blogDetails, blogDelete }

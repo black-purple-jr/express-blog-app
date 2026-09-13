@@ -18,20 +18,7 @@ router.get('/blogs/new', (req, res) => {
   res.render('new', { title: "New Blog" });
 })
 
-router.get("/blogs/:id", (req, res) => {
-  const id = req.params.id;
-
-  Blog.findById(id)
-    .then(result => res.render("details", { blog: result, title: result.title }))
-    .catch(err => console.log(err));
-});
-
-router.delete('/blogs/:id', (req, res) => {
-  const id = req.params.id;
-
-  Blog.findByIdAndDelete(id)
-    .then(result => res.json({ redirect: "/blogs" }))
-    .catch(err => console.log(err))
-});
+router.get("/blogs/:id", blogController.blogDetails);
+router.delete('/blogs/:id', blogController.blogDelete);
 
 module.exports = router;
