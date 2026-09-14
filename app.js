@@ -35,7 +35,7 @@ app.get("/about", (req, res) => {
 });
 
 // blog routes
-app.use(blogRoutes)
+app.use(blogRoutes);
 
 // 404 Not Found
 app.use((req, res) => {
