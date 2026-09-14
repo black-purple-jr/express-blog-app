@@ -33,6 +33,7 @@ This is a simple blog app built with [Express.js](https://expressjs.com/) that l
 * Git
 * Node.js
 * NPM (comes with Node.js)
+* MongoDB
 
 ## Installation
 
