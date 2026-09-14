@@ -27,3 +27,31 @@ This is a simple blog app built with [Express.js](https://expressjs.com/) that l
 * `morgan v1.12.0`: an HTTP request logger that shows information such as the HTTP method, route, status code, and response time.
 
 # Quick Start
+
+## Prerequisites
+
+* Git
+* Node
+* NPM (comes with node)
+
+## Installation
+
+### 1. Clone the repo locally
+
+```bash
+git clone https://github.com/black-purple-jr/express-blog-app.git
+```
+
+### 2. Install the necessary dependencies
+
+```bash
+npm install
+```
+
+### 3. Run a local dev server
+
+```bash
+npm run dev
+```
+
+### 4. Enter the URL (http://localhost:3000) on a browser
