@@ -6,9 +6,9 @@ This is a simple blog app built with [Express.js](https://expressjs.com/) that l
 
 ## Features
 
-* Adding blogs.
-* Deleting blogs.
-* 404 page
+* Adding blog posts.
+* Deleting blog posts.
+* Custom 404 page.
 
 # Technology Used
 
@@ -16,11 +16,14 @@ This is a simple blog app built with [Express.js](https://expressjs.com/) that l
 * Express
 * Tailwind CSS v4
 * EJS
+* MongoDB
 
 # Packages
 
-* `ejs v6.0.1`: a vue engine that renders data inside vues dynamicly
-* `express v5.2.1`: a package that allows you to build rest APIs
-* `mongoose v9.9.5`: a driver for MongoDB
-* `nodemon v3.1.14`: it reruns the app after changes
-* `morgan`: shows the HTTP method, the route, status code and the time needed
+* `ejs v6.0.1`: a view / template engine that renders data inside vues dynamicly.
+* `express v5.2.1`: a web framework for Node.js used to build web applications and APIs.
+* `mongoose v9.9.5`: an ODM (Object Data Modeling) library for MongoDB and Node.js.
+* `nodemon v3.1.14`: automatically restarts the application when changes are detected.
+* `morgan v1.12.0`: an HTTP request logger that shows information such as the HTTP method, route, status code, and response time.
+
+# Quick Start
