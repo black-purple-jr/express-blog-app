@@ -5,14 +5,7 @@ const blogController = require('../src/controllers/blogController');
 
 
 router.get("/blogs", blogController.Index);
-router.post('/blogs', (req, res) => {
-  const blog = new Blog(req.body);
-
-  blog.save()
-    .then(result => res.redirect('/blogs'))
-    .catch(err => console.log(err))
-});
-
+router.post('/blogs', Save);
 router.get('/blogs/new', blogController.New);
 router.get("/blogs/:id", blogController.Details);
 router.delete('/blogs/:id', blogController.Delete);

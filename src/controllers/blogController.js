@@ -18,12 +18,20 @@ const New = (req, res) => {
   res.render('new', { title: "New Blog" });
 }
 
+const Save = (req, res) => {
+  const blog = new Blog(req.body);
+  
+    blog.save()
+      .then(result => res.redirect('/blogs'))
+      .catch(err => console.log(err));
+}
+
 const Delete = (req, res) => {
   const id = req.params.id;
 
   Blog.findByIdAndDelete(id)
     .then(result => res.json({ redirect: "/blogs" }))
-    .catch(err => console.log(err))
+    .catch(err => console.log(err));
 }
 
-module.exports = { Index, New, Details, Delete }
+module.exports = { Index, New, Save, Details, Delete }
