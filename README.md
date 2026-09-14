@@ -56,3 +56,7 @@ npm run dev
 ```
 
 ### 4. Enter the URL (http://localhost:3000) on a browser
+
+# Author
+
+* Abdellah DAKIR ALLAH a.k.a [black-purple-jr](https://github.com/black-purple-jr) on Github and some other plateforms.
