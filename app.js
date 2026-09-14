@@ -39,5 +39,5 @@ app.use(blogRoutes);
 
 // 404 Not Found
 app.use((req, res) => {
-  res.status(404).render('404', { title: "Page Not Found" });
+  res.status(404).render('notFound', { title: "Page Not Found", statusCode: res.statusCode });
 });

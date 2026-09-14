@@ -11,7 +11,7 @@ const Details = (req, res) => {
 
   Blog.findById(id)
     .then(result => res.render("details", { blog: result, title: result.title }))
-    .catch(err => console.log(err));
+    .catch(err => res.status(404).render('notFound', { title: "Blog Not Found", statusCode: res.statusCode }));
 };
 
 const New = (req, res) => {
