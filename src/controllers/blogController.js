@@ -1,12 +1,12 @@
 const Blog = require('../models/blog')
 
-const blogIndex = (req, res) => {
+const Index = (req, res) => {
   Blog.find().sort({ createdAt: -1 })
     .then(result => res.render('index', { title: "All blogs", blogs: result }))
     .catch(err => console.log(err));
 };
 
-const blogDetails = (req, res) => {
+const Details = (req, res) => {
   const id = req.params.id;
 
   Blog.findById(id)
@@ -14,7 +14,11 @@ const blogDetails = (req, res) => {
     .catch(err => console.log(err));
 };
 
-const blogDelete = (req, res) => {
+const New = (req, res) => {
+  res.render('new', { title: "New Blog" });
+}
+
+const Delete = (req, res) => {
   const id = req.params.id;
 
   Blog.findByIdAndDelete(id)
@@ -22,4 +26,4 @@ const blogDelete = (req, res) => {
     .catch(err => console.log(err))
 }
 
-module.exports = { blogIndex, blogDetails, blogDelete }
+module.exports = { Index, New, Details, Delete }
