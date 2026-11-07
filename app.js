@@ -11,6 +11,7 @@ const app = express();
 
 // Connection to mongoDB
 const dbURI = "mongodb://localhost:27017/express-blogs";
+
 mongoose.connect(dbURI)
   .then(res => app.listen(port))
   .catch(err => console.log(err))
